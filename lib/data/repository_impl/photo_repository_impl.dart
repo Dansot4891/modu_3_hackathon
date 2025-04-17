@@ -1,9 +1,9 @@
 import 'package:modu_3_hackathon/core/modules/error_handling/result.dart';
 import 'package:modu_3_hackathon/core/modules/exception/custom_exception.dart';
-import 'package:modu_3_hackathon/photo/data_source/photo_data_source.dart';
-import 'package:modu_3_hackathon/photo/mapper/photo_mapper.dart';
-import 'package:modu_3_hackathon/photo/model/photo.dart';
-import 'package:modu_3_hackathon/photo/repository/photo_repository.dart';
+import 'package:modu_3_hackathon/data/data_source/photo_data_source.dart';
+import 'package:modu_3_hackathon/data/mapper/photo_mapper.dart';
+import 'package:modu_3_hackathon/domain/model/photo.dart';
+import 'package:modu_3_hackathon/domain/repository/photo_repository.dart';
 
 class PhotoRepositoryImpl implements PhotoRepository {
   final PhotoDataSource _dataSource;
