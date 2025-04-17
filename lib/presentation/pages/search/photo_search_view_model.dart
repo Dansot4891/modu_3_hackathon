@@ -14,7 +14,7 @@ class PhotoSearchViewModel with ChangeNotifier {
   PhotoSearchState get state => _state;
 
   void getPhotos(String tags) async {
-    _state = state.copyWith(state: BaseState.error);
+    _state = state.copyWith(state: BaseState.loading);
     notifyListeners();
     final result = await _getPhotosUseCase.execute(tags);
     switch (result) {

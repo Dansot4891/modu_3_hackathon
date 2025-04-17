@@ -1,5 +1,3 @@
-import 'package:modu_3_hackathon/core/constants/key/api_key.dart';
-
 class PixabayParams {
   final String key;
   final String lang;
@@ -7,7 +5,7 @@ class PixabayParams {
   final String tags;
 
   PixabayParams({
-    this.key = ApiKey.pixabayKey,
+    required this.key,
     this.lang = 'ko',
     this.imageType = 'photo',
     required this.tags,

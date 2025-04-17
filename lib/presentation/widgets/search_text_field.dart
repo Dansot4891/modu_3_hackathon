@@ -37,7 +37,7 @@ class SearchTextField extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           suffixIcon: GestureDetector(
-            onTap: () {},
+            onTap: onTap,
             child: const Icon(
               Icons.search,
               color: AppColor.primary100,

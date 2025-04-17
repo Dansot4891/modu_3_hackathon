@@ -16,6 +16,7 @@ class GetPhotosUseCase {
       final photos = await _photoRepository.getPhotos(tags);
       return Success(photos);
     } catch (e) {
+      print(e);
       return Result.error(ImageNetworkError());
     }
   }

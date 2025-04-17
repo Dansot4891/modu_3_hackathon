@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:modu_3_hackathon/core/secure/env_manager/env_manager.dart';
 import 'package:modu_3_hackathon/presentation/pages/search/photo_search_view_model.dart';
 import 'package:modu_3_hackathon/presentation/widgets/search_text_field.dart';
 
@@ -27,7 +28,15 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
               children: [
                 SearchTextField(
                   controller: _searchText,
-                  onTap: () {},
+                  onTap: () async {
+                    if (_searchText.text.isEmpty) {
+                      print('no data');
+                      final envManager = EnvManager();
+                      print(await envManager.readEnvData());
+                      return;
+                    }
+                    widget.viewModel.getPhotos(_searchText.text);
+                  },
                 ),
                 const SizedBox(
                   height: 24,

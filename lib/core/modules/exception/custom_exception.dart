@@ -19,3 +19,8 @@ class ImageValidateError extends CustomException {
 class ImageNetworkError extends CustomException {
   ImageNetworkError() : super(50000, '알 수 없는 네트워크 에러');
 }
+
+// Photo Exception
+class EnvFileError extends CustomException {
+  EnvFileError() : super(50001, '이미지 키 값이 없습니다.');
+}
