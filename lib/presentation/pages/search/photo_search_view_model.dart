@@ -23,7 +23,8 @@ class PhotoSearchViewModel with ChangeNotifier {
       case Success<List<Photo>>():
         _state = state.copyWith(state: BaseState.success, photos: result.data);
       case Error<List<Photo>>():
-        _state = state.copyWith(state: BaseState.error);
+        _state = state.copyWith(
+            state: BaseState.error, errorMessage: result.error.message);
     }
     notifyListeners();
   }
