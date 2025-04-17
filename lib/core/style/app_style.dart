@@ -4,7 +4,7 @@ import 'package:modu_3_hackathon/core/style/app_color.dart';
 abstract class AppTextStyle {
   // bold
   static const TextStyle hintText = TextStyle(
-    fontSize: 24,
+    fontSize: 20,
     color: AppColor.grey1,
     fontWeight: FontWeight.w400,
   );

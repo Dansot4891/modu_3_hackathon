@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:modu_3_hackathon/presentation/pages/photo_info_page.dart';
-import 'package:modu_3_hackathon/presentation/pages/photo_search_page.dart';
+import 'package:modu_3_hackathon/presentation/pages/info/photo_info_page.dart';
+import 'package:modu_3_hackathon/presentation/pages/search/photo_search_page.dart';
 
 final routes = [
   GoRoute(
