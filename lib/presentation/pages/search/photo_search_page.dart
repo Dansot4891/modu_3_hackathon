@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:modu_3_hackathon/core/modules/state/base_state.dart';
 import 'package:go_router/go_router.dart';
+import 'package:modu_3_hackathon/core/modules/state/state_handling.dart';
 import 'package:modu_3_hackathon/core/router/routes.dart';
 import 'package:modu_3_hackathon/presentation/pages/search/photo_search_view_model.dart';
 import 'package:modu_3_hackathon/presentation/widgets/search_text_field.dart';
@@ -44,47 +44,44 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                     listenable: widget.viewModel,
                     builder: (context, child) {
                       final state = widget.viewModel.state;
-                      switch (state.state) {
-                        case BaseState.init:
-                          return const Center(
-                            child: Text('검색어를 입력해주세요.'),
-                          );
-                        case BaseState.loading:
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        case BaseState.error:
-                          return Center(
-                            child: Text(state.errorMessage),
-                          );
-                        case BaseState.success:
-                          return Expanded(
-                              child: GridView.builder(
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 2,
-                                          mainAxisSpacing: 34,
-                                          crossAxisSpacing: 36),
-                                  itemCount: state.photos.length,
-                                  itemBuilder: (context, index) {
-                                    final photo = state.photos[index];
-                                    return InkWell(
-                                      onTap: () {
-                                        context.pushNamed(AppRoutes.info.name,
-                                            pathParameters: {
-                                              'id': '${photo.id}'
-                                            });
-                                      },
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(15),
-                                        child: Image.network(
-                                          photo.previewURL,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    );
-                                  }));
-                      }
+                      return StateHandling(
+                        state.state,
+                        init: const Center(
+                          child: Text('검색어를 입력해주세요.'),
+                        ),
+                        loading: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        error: Center(
+                          child: Text(state.errorMessage),
+                        ),
+                        success: Expanded(
+                          child: GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 34,
+                                    crossAxisSpacing: 36),
+                            itemCount: state.photos.length,
+                            itemBuilder: (context, index) {
+                              final photo = state.photos[index];
+                              return InkWell(
+                                onTap: () {
+                                  context.pushNamed(AppRoutes.info.name,
+                                      pathParameters: {'id': '${photo.id}'});
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.network(
+                                    photo.previewURL,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      );
                     })
               ],
             ),

@@ -10,6 +10,7 @@ PhotoInfoDto _$PhotoInfoDtoFromJson(Map<String, dynamic> json) => PhotoInfoDto(
       previewURL: json['previewURL'] as String?,
       user: json['user'] as String?,
       id: (json['id'] as num?)?.toInt(),
+      tags: json['tags'] as String?,
     );
 
 Map<String, dynamic> _$PhotoInfoDtoToJson(PhotoInfoDto instance) =>
@@ -17,4 +18,5 @@ Map<String, dynamic> _$PhotoInfoDtoToJson(PhotoInfoDto instance) =>
       'previewURL': instance.previewURL,
       'user': instance.user,
       'id': instance.id,
+      'tags': instance.tags,
     };
