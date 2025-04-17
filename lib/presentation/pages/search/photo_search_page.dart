@@ -65,7 +65,6 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                             itemCount: state.photos.length,
                             itemBuilder: (context, index) {
                               final photo = state.photos[index];
-                              print(state.photos[0].toString());
                               return InkWell(
                                 onTap: () {
                                   context.pushNamed(AppRoutes.info.name,

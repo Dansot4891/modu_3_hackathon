@@ -34,9 +34,10 @@ class _PhotoInfoPageState extends State<PhotoInfoPage> {
           builder: (context, child) {
             final state = viewModel.state;
             if (state.photo == null) {
-              return const SizedBox();
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
-            print(state.photo.toString());
             return StateHandling(state.state,
                 init: const Center(
                   child: CircularProgressIndicator(),
