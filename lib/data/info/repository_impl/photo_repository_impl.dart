@@ -1,5 +1,5 @@
-import 'package:modu_3_hackathon/data/data_source/photo_data_source.dart';
-import 'package:modu_3_hackathon/data/mapper/photo_mapper.dart';
+import 'package:modu_3_hackathon/data/search/data_source/photo_data_source.dart';
+import 'package:modu_3_hackathon/data/search/mapper/photo_mapper.dart';
 import 'package:modu_3_hackathon/domain/model/photo.dart';
 import 'package:modu_3_hackathon/domain/repository/photo_repository.dart';
 

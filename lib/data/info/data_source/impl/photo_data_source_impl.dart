@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:modu_3_hackathon/core/constants/api/api_urls.dart';
 import 'package:modu_3_hackathon/core/constants/key/api_key.dart';
-import 'package:modu_3_hackathon/data/data_source/photo_data_source.dart';
-import 'package:modu_3_hackathon/data/dto/photo_dto.dart';
+import 'package:modu_3_hackathon/data/info/data_source/photo_info_data_source.dart';
+import 'package:modu_3_hackathon/data/search/dto/photo_dto.dart';
 import 'package:modu_3_hackathon/domain/model/pixabay_params.dart';
 
-class PhotoDataSourceImpl implements PhotoDataSource {
+class PhotoInfoDataSourceImpl implements PhotoInfoDataSource {
   final String _path = ApiUrls.pixabayApiUrl;
 
   @override

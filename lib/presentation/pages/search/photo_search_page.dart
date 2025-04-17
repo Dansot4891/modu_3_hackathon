@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:modu_3_hackathon/core/modules/state/base_state.dart';
+import 'package:go_router/go_router.dart';
+import 'package:modu_3_hackathon/core/router/routes.dart';
 import 'package:modu_3_hackathon/presentation/pages/search/photo_search_view_model.dart';
 import 'package:modu_3_hackathon/presentation/widgets/search_text_field.dart';
 
@@ -65,11 +67,19 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                                           crossAxisSpacing: 36),
                                   itemBuilder: (context, index) {
                                     final photo = state.photos[index];
-                                    return ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: Image.network(
-                                        'https://i.namu.wiki/i/d1A_wD4kuLHmOOFqJdVlOXVt1TWA9NfNt_HA0CS0Y_N0zayUAX8olMuv7odG2FiDLDQZIRBqbPQwBSArXfEJlQ.webp',
-                                        fit: BoxFit.cover,
+                                    return InkWell(
+                                      onTap: () {
+                                        context.pushNamed(AppRoutes.info.name,
+                                            pathParameters: {
+                                              'id': '${photo.id}'
+                                            });
+                                      },
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(15),
+                                        child: Image.network(
+                                          photo.previewURL,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     );
                                   }));
