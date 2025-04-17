@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:modu_3_hackathon/presentation/pages/photo_info_page.dart';
 import 'package:modu_3_hackathon/presentation/pages/photo_search_page.dart';
 
 final routes = [
@@ -7,6 +8,16 @@ final routes = [
     name: AppRoutes.search.name,
     builder: (context, state) {
       return const PhotoSearchPage();
+    },
+  ),
+  GoRoute(
+    path: AppRoutes.info.path,
+    name: AppRoutes.info.name,
+    builder: (context, state) {
+      final id = state.pathParameters['id'];
+      return PhotoInfoPage(
+        id: int.parse(id!),
+      );
     },
   ),
 ];
