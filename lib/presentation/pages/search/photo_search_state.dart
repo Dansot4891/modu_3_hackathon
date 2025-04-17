@@ -6,7 +6,7 @@ class PhotoSearchState {
   final List<Photo> photos;
   final String errorMessage;
   const PhotoSearchState({
-    this.state = BaseState.loading,
+    this.state = BaseState.init,
     this.photos = const [],
     this.errorMessage = '',
   });

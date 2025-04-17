@@ -44,10 +44,11 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                     listenable: widget.viewModel,
                     builder: (context, child) {
                       final state = widget.viewModel.state;
-                      if (state.photos.isEmpty) {
-                        return const SizedBox();
-                      }
                       switch (state.state) {
+                        case BaseState.init:
+                          return const Center(
+                            child: Text('검색어를 입력해주세요.'),
+                          );
                         case BaseState.loading:
                           return const Center(
                             child: CircularProgressIndicator(),

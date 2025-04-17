@@ -13,7 +13,6 @@ class GetPhotoInfoUseCase {
       final photo = await _photoRepository.getPhotoInfo(id);
       return Success(photo);
     } catch (e) {
-      print(e);
       return Result.error(ImageNetworkError());
     }
   }
