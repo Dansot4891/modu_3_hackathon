@@ -4,7 +4,7 @@ import 'package:modu_3_hackathon/core/constants/api/api_urls.dart';
 import 'package:modu_3_hackathon/core/constants/key/api_key.dart';
 import 'package:modu_3_hackathon/data/info/data_source/photo_info_data_source.dart';
 import 'package:modu_3_hackathon/data/search/dto/photo_dto.dart';
-import 'package:modu_3_hackathon/domain/model/pixabay_params.dart';
+import 'package:modu_3_hackathon/domain/search/model/pixabay_params.dart';
 
 class PhotoInfoDataSourceImpl implements PhotoInfoDataSource {
   final String _path = ApiUrls.pixabayApiUrl;

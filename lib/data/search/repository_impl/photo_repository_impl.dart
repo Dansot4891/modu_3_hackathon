@@ -1,7 +1,7 @@
 import 'package:modu_3_hackathon/data/search/data_source/photo_data_source.dart';
 import 'package:modu_3_hackathon/data/search/mapper/photo_mapper.dart';
-import 'package:modu_3_hackathon/domain/model/photo.dart';
-import 'package:modu_3_hackathon/domain/repository/photo_repository.dart';
+import 'package:modu_3_hackathon/domain/search/model/photo.dart';
+import 'package:modu_3_hackathon/domain/search/repository/photo_repository.dart';
 
 class PhotoRepositoryImpl implements PhotoRepository {
   final PhotoDataSource _dataSource;

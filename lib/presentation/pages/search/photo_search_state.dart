@@ -1,5 +1,5 @@
 import 'package:modu_3_hackathon/core/modules/state/base_state.dart';
-import 'package:modu_3_hackathon/domain/model/photo.dart';
+import 'package:modu_3_hackathon/domain/search/model/photo.dart';
 
 class PhotoSearchState {
   final BaseState state;

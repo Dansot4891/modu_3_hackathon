@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:modu_3_hackathon/data/search/data_source/impl/photo_data_source_impl.dart';
 import 'package:modu_3_hackathon/data/search/repository_impl/photo_repository_impl.dart';
-import 'package:modu_3_hackathon/domain/use_case/get_photos_use_case.dart';
+import 'package:modu_3_hackathon/domain/search/use_case/get_photos_use_case.dart';
 import 'package:modu_3_hackathon/presentation/pages/info/photo_info_page.dart';
 import 'package:modu_3_hackathon/presentation/pages/search/photo_search_page.dart';
 import 'package:modu_3_hackathon/presentation/pages/search/photo_search_view_model.dart';

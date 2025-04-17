@@ -1,12 +1,12 @@
-import 'package:modu_3_hackathon/data/search/data_source/photo_data_source.dart';
+import 'package:modu_3_hackathon/data/info/data_source/photo_info_data_source.dart';
 import 'package:modu_3_hackathon/data/search/mapper/photo_mapper.dart';
-import 'package:modu_3_hackathon/domain/model/photo.dart';
-import 'package:modu_3_hackathon/domain/repository/photo_repository.dart';
+import 'package:modu_3_hackathon/domain/info/repository/photo_info_repository.dart';
+import 'package:modu_3_hackathon/domain/search/model/photo.dart';
 
-class PhotoRepositoryImpl implements PhotoRepository {
-  final PhotoDataSource _dataSource;
+class PhotoInfoRepositoryImpl implements PhotoInfoRepository {
+  final PhotoInfoDataSource _dataSource;
 
-  const PhotoRepositoryImpl(this._dataSource);
+  const PhotoInfoRepositoryImpl(this._dataSource);
 
   @override
   Future<List<Photo>> getPhotos(

@@ -3,14 +3,12 @@ class PixabayParams {
   final String lang;
   final String imageType;
   final String tags;
-  final int? id;
 
   PixabayParams({
     required this.key,
-    this.id,
     this.lang = 'ko',
     this.imageType = 'photo',
-    this.tags = '',
+    required this.tags,
   });
 
   String toQuery() {
