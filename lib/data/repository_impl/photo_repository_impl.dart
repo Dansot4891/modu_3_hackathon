@@ -11,7 +11,7 @@ class PhotoRepositoryImpl implements PhotoRepository {
   const PhotoRepositoryImpl(this._dataSource);
 
   @override
-  Future<Result<List<Photo>, CustomException>> getPhotos(
+  Future<Result<List<Photo>>> getPhotos(
     List<String> tags,
   ) async {
     try {
