@@ -1,13 +1,19 @@
 import 'package:go_router/go_router.dart';
+import 'package:modu_3_hackathon/data/data_source/impl/photo_data_source_impl.dart';
+import 'package:modu_3_hackathon/data/repository_impl/photo_repository_impl.dart';
+import 'package:modu_3_hackathon/domain/use_case/get_photos_use_case.dart';
 import 'package:modu_3_hackathon/presentation/pages/info/photo_info_page.dart';
 import 'package:modu_3_hackathon/presentation/pages/search/photo_search_page.dart';
+import 'package:modu_3_hackathon/presentation/pages/search/photo_search_view_model.dart';
 
 final routes = [
   GoRoute(
     path: AppRoutes.search.path,
     name: AppRoutes.search.name,
     builder: (context, state) {
-      return const PhotoSearchPage();
+      final viewModel = PhotoSearchViewModel(
+          GetPhotosUseCase(PhotoRepositoryImpl(PhotoDataSourceImpl())));
+      return PhotoSearchPage(viewModel);
     },
   ),
   GoRoute(
