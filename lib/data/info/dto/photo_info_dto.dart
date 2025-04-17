@@ -5,6 +5,7 @@ part 'photo_info_dto.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class PhotoInfoDto {
+  @JsonKey(name: 'webformatURL')
   final String? previewURL;
   final String? user;
   final int? id;

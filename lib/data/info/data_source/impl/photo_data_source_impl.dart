@@ -14,6 +14,7 @@ class PhotoInfoDataSourceImpl implements PhotoInfoDataSource {
   Future<PhotoResultDto<PhotoInfoDto>> getPhotoInfo(int id) async {
     final queries = PixabayParams(id: id, key: ApiKey.pixabayKey);
     final resp = await http.get(Uri.parse(_path + queries.toQuery()));
+    print(queries.toQuery());
     final photoDto = PhotoResultDto<PhotoInfoDto>.fromJson(
       jsonDecode(resp.body),
       (json) => PhotoInfoDto.fromJson(json as Map<String, dynamic>),

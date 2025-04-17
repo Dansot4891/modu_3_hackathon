@@ -1,19 +1,20 @@
 class PixabayParams {
   final String key;
-  final String lang;
-  final String imageType;
-  final String tags;
+  final String? tags;
   final int? id;
 
   PixabayParams({
     required this.key,
     this.id,
-    this.lang = 'ko',
-    this.imageType = 'photo',
-    this.tags = '',
+    this.tags,
   });
 
   String toQuery() {
-    return '?key=$key&lang=$lang&image_type=$imageType&q=$tags';
+    if (id == null) {
+      return '?key=$key&q=$tags';
+    } else if (tags == null) {
+      return '?key=$key&id=$id';
+    }
+    return '?key=$key&q=$tags&id=$id';
   }
 }

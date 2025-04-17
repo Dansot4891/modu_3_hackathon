@@ -44,19 +44,19 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                     listenable: widget.viewModel,
                     builder: (context, child) {
                       final state = widget.viewModel.state;
-                      return StateHandling(
-                        state.state,
-                        init: const Center(
-                          child: Text('검색어를 입력해주세요.'),
-                        ),
-                        loading: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        error: Center(
-                          child: Text(state.errorMessage),
-                        ),
-                        success: Expanded(
-                          child: GridView.builder(
+                      return Expanded(
+                        child: StateHandling(
+                          state.state,
+                          init: const Center(
+                            child: Text('검색어를 입력해주세요.'),
+                          ),
+                          loading: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          error: Center(
+                            child: Text(state.errorMessage),
+                          ),
+                          success: GridView.builder(
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
@@ -65,6 +65,7 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                             itemCount: state.photos.length,
                             itemBuilder: (context, index) {
                               final photo = state.photos[index];
+                              print(state.photos[0].toString());
                               return InkWell(
                                 onTap: () {
                                   context.pushNamed(AppRoutes.info.name,

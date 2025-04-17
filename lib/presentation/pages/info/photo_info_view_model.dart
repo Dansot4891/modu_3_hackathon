@@ -19,16 +19,11 @@ class PhotoInfoViewModel with ChangeNotifier {
     final result = await _getPhotoInfoUseCase.execute(id);
     switch (result) {
       case Success<PhotoInfo>():
-        _state = state.copyWith(state: BaseState.success, photo: result.data);
+        _state = state.copyWith(photo: result.data, state: BaseState.success);
       case Error<PhotoInfo>():
         _state = state.copyWith(
             state: BaseState.error, errorMessage: result.error.message);
     }
     notifyListeners();
-  }
-
-  void isError() {
-    _state =
-        state.copyWith(state: BaseState.error, errorMessage: '에러가 발생하였습니다.');
   }
 }

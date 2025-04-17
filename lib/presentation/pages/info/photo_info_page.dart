@@ -19,6 +19,7 @@ class _PhotoInfoPageState extends State<PhotoInfoPage> {
 
   @override
   void initState() {
+    print(widget.id);
     viewModel = PhotoInfoViewModel(GetPhotoInfoUseCase(
         PhotoInfoRepositoryImpl(PhotoInfoDataSourceImpl())));
     viewModel.getPhotoInfo(widget.id);
@@ -32,9 +33,13 @@ class _PhotoInfoPageState extends State<PhotoInfoPage> {
           listenable: viewModel,
           builder: (context, child) {
             final state = viewModel.state;
+            if (state.photo == null) {
+              return const SizedBox();
+            }
+            print(state.photo.toString());
             return StateHandling(state.state,
                 init: const Center(
-                  child: Text('검색어를 입력해주세요.'),
+                  child: CircularProgressIndicator(),
                 ),
                 loading: const Center(
                   child: CircularProgressIndicator(),
@@ -42,30 +47,50 @@ class _PhotoInfoPageState extends State<PhotoInfoPage> {
                 error: Center(
                   child: Text(state.errorMessage),
                 ),
-                success: Column(
-                  children: [
-                    Image.network(
-                      width: MediaQuery.sizeOf(context).width,
-                      height: MediaQuery.sizeOf(context).width,
-                      viewModel.state.photo!.previewURL,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'user : ${viewModel.state.photo!.user}',
-                      style: AppTextStyle.body,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'tags : ${viewModel.state.photo!.tags}',
-                      style: AppTextStyle.body,
-                    ),
-                  ],
+                success: success(
+                  url: state.photo!.previewURL,
+                  user: state.photo!.user,
+                  tags: state.photo!.tags,
                 ));
           }),
+    );
+  }
+
+  Column success({
+    required String url,
+    required String user,
+    required String tags,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Image.network(
+          width: MediaQuery.sizeOf(context).width,
+          height: MediaQuery.sizeOf(context).width,
+          url,
+          fit: BoxFit.cover,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Text(
+            'user : $user',
+            style: AppTextStyle.body,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Text(
+            'tags : $tags',
+            style: AppTextStyle.body,
+          ),
+        ),
+      ],
     );
   }
 }
