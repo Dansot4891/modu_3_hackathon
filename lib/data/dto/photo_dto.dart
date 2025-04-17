@@ -7,13 +7,16 @@ part 'photo_dto.g.dart';
 class PhotoDto {
   final String? tags;
   final String? previewURL;
+  final String? user;
 
   PhotoDto({
     this.tags,
     this.previewURL,
+    this.user,
   });
 
-  factory PhotoDto.fromJson(Map<String, dynamic> json) => _$PhotoDtoFromJson(json);
+  factory PhotoDto.fromJson(Map<String, dynamic> json) =>
+      _$PhotoDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$PhotoDtoToJson(this);
 }
@@ -36,7 +39,8 @@ class PhotoResultDto {
       totalHits: json['totalHits'] as int?,
       hits: (json['hits'] as List<dynamic>?)
               ?.map((e) => PhotoDto.fromJson(e as Map<String, dynamic>))
-              .toList() ?? [],
+              .toList() ??
+          [],
     );
   }
 

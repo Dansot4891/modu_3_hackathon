@@ -6,6 +6,7 @@ extension PhotoMapper on PhotoDto {
     return Photo(
       tags: tags == null ? [] : tags!.split(','),
       previewURL: previewURL ?? '',
+      user: user ?? '',
     );
   }
 }
