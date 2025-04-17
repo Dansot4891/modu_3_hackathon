@@ -4,21 +4,25 @@ class PhotoInfo {
   final String previewURL;
   final String user;
   final int id;
+  final String tags;
   PhotoInfo({
-    required this.id,
     required this.previewURL,
     required this.user,
+    required this.id,
+    required this.tags,
   });
 
   PhotoInfo copyWith({
     String? previewURL,
     String? user,
     int? id,
+    String? tags,
   }) {
     return PhotoInfo(
       previewURL: previewURL ?? this.previewURL,
       user: user ?? this.user,
       id: id ?? this.id,
+      tags: tags ?? this.tags,
     );
   }
 
@@ -28,13 +32,17 @@ class PhotoInfo {
 
     return other.previewURL == previewURL &&
         other.user == user &&
-        other.id == id;
+        other.id == id &&
+        other.tags == tags;
   }
 
   @override
-  int get hashCode => previewURL.hashCode ^ user.hashCode ^ id.hashCode;
+  int get hashCode {
+    return previewURL.hashCode ^ user.hashCode ^ id.hashCode ^ tags.hashCode;
+  }
 
   @override
-  String toString() =>
-      'PhotoInfo(previewURL: $previewURL, user: $user, id: $id)';
+  String toString() {
+    return 'PhotoInfo(previewURL: $previewURL, user: $user, id: $id, tags: $tags)';
+  }
 }

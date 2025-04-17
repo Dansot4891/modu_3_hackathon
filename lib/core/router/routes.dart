@@ -22,7 +22,7 @@ final routes = [
     builder: (context, state) {
       final id = state.pathParameters['id'];
       return PhotoInfoPage(
-        id: int.parse(id!),
+        int.parse(id!),
       );
     },
   ),

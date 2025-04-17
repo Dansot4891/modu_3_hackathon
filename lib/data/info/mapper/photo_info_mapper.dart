@@ -7,6 +7,7 @@ extension PhotoInfoMapper on PhotoInfoDto {
       previewURL: previewURL ?? '',
       user: user ?? '',
       id: id ?? 0,
+      tags: tags ?? '',
     );
   }
 }
