@@ -19,19 +19,3 @@ Map<String, dynamic> _$PhotoDtoToJson(PhotoDto instance) => <String, dynamic>{
       'user': instance.user,
       'id': instance.id,
     };
-
-PhotoResultDto _$PhotoResultDtoFromJson(Map<String, dynamic> json) =>
-    PhotoResultDto(
-      total: (json['total'] as num?)?.toInt(),
-      totalHits: (json['totalHits'] as num?)?.toInt(),
-      hits: (json['hits'] as List<dynamic>)
-          .map((e) => PhotoDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$PhotoResultDtoToJson(PhotoResultDto instance) =>
-    <String, dynamic>{
-      'total': instance.total,
-      'totalHits': instance.totalHits,
-      'hits': instance.hits.map((e) => e.toJson()).toList(),
-    };

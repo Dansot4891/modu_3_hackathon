@@ -1,5 +1,5 @@
-import 'package:modu_3_hackathon/domain/search/model/photo.dart';
+import 'package:modu_3_hackathon/domain/info/model/photo_info.dart';
 
 abstract interface class PhotoInfoRepository {
-  Future<List<Photo>> getPhotos(String tags);
+  Future<PhotoInfo> getPhotoInfo(int id);
 }

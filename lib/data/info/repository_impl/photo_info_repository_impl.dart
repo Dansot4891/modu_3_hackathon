@@ -1,7 +1,7 @@
 import 'package:modu_3_hackathon/data/info/data_source/photo_info_data_source.dart';
-import 'package:modu_3_hackathon/data/search/mapper/photo_mapper.dart';
+import 'package:modu_3_hackathon/data/info/mapper/photo_info_mapper.dart';
+import 'package:modu_3_hackathon/domain/info/model/photo_info.dart';
 import 'package:modu_3_hackathon/domain/info/repository/photo_info_repository.dart';
-import 'package:modu_3_hackathon/domain/search/model/photo.dart';
 
 class PhotoInfoRepositoryImpl implements PhotoInfoRepository {
   final PhotoInfoDataSource _dataSource;
@@ -9,11 +9,11 @@ class PhotoInfoRepositoryImpl implements PhotoInfoRepository {
   const PhotoInfoRepositoryImpl(this._dataSource);
 
   @override
-  Future<List<Photo>> getPhotos(
-    String tags,
+  Future<PhotoInfo> getPhotoInfo(
+    int id,
   ) async {
-    final resp = await _dataSource.getPhotos(tags);
-    final photos = resp.hits.map((e) => e.toPhoto()).toList();
-    return photos;
+    final resp = await _dataSource.getPhotoInfo(id);
+    final photo = resp.hits.map((e) => e.toPhotoInfo()).first;
+    return photo;
   }
 }

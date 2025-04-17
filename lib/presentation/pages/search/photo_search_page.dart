@@ -32,7 +32,6 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                   controller: _searchText,
                   onTap: () async {
                     if (_searchText.text.isEmpty) {
-                      print('no data');
                       return;
                     }
                     widget.viewModel.getPhotos(_searchText.text);
@@ -65,6 +64,7 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                                           crossAxisCount: 2,
                                           mainAxisSpacing: 34,
                                           crossAxisSpacing: 36),
+                                  itemCount: state.photos.length,
                                   itemBuilder: (context, index) {
                                     final photo = state.photos[index];
                                     return InkWell(
