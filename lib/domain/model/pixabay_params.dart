@@ -14,6 +14,6 @@ class PixabayParams {
   });
 
   String toQuery() {
-    return '?key=$key&lang=$lang&image_type=$imageType&tags=$tags';
+    return '?key=$key&lang=$lang&image_type=$imageType&q=$tags';
   }
 }
