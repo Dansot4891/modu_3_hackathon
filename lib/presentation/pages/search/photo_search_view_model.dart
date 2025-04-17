@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:modu_3_hackathon/core/modules/converter/tag_converter.dart';
 import 'package:modu_3_hackathon/core/modules/error_handling/result.dart';
 import 'package:modu_3_hackathon/core/modules/state/base_state.dart';
 import 'package:modu_3_hackathon/domain/model/photo.dart';
@@ -17,8 +16,7 @@ class PhotoSearchViewModel with ChangeNotifier {
   void getPhotos(String tags) async {
     _state = state.copyWith(state: BaseState.error);
     notifyListeners();
-    final result =
-        await _getPhotosUseCase.execute(CustomConverter.stringToList(tags));
+    final result = await _getPhotosUseCase.execute(tags);
     switch (result) {
       case Success<List<Photo>>():
         _state = state.copyWith(state: BaseState.success, photos: result.data);

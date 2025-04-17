@@ -1,11 +1,10 @@
-import 'package:modu_3_hackathon/core/modules/converter/tag_converter.dart';
 import 'package:modu_3_hackathon/core/constants/key/api_key.dart';
 
 class PixabayParams {
   final String key;
   final String lang;
   final String imageType;
-  final List<String> tags;
+  final String tags;
 
   PixabayParams({
     this.key = ApiKey.pixabayKey,
@@ -15,6 +14,6 @@ class PixabayParams {
   });
 
   String toQuery() {
-    return '?key=$key&lang=$lang&image_type=$imageType&tags=${CustomConverter.listToString(tags)}';
+    return '?key=$key&lang=$lang&image_type=$imageType&tags=$tags';
   }
 }

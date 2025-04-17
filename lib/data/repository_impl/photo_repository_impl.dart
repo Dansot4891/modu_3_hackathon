@@ -10,7 +10,7 @@ class PhotoRepositoryImpl implements PhotoRepository {
 
   @override
   Future<List<Photo>> getPhotos(
-    List<String> tags,
+    String tags,
   ) async {
     final resp = await _dataSource.getPhotos(tags);
     final photos = resp.hits.map((e) => e.toPhoto()).toList();

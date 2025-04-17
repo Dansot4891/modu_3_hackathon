@@ -8,9 +8,9 @@ class GetPhotosUseCase {
 
   GetPhotosUseCase(this._photoRepository);
 
-  Future<Result<List<Photo>>> execute(List<String> tags) async {
+  Future<Result<List<Photo>>> execute(String tags) async {
     try {
-      if (tags.map((e) => e.trim()).contains('바보')) {
+      if (tags.contains('바보')) {
         return Result.error(ImageValidateError());
       }
       final photos = await _photoRepository.getPhotos(tags);
