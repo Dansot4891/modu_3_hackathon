@@ -7,6 +7,7 @@ extension PhotoMapper on PhotoDto {
       tags: tags == null ? [] : tags!.split(','),
       previewURL: previewURL ?? '',
       user: user ?? '',
+      id: id ?? 0,
     );
   }
 }

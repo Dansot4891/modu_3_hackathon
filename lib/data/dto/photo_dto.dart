@@ -8,11 +8,13 @@ class PhotoDto {
   final String? tags;
   final String? previewURL;
   final String? user;
+  final int? id;
 
   PhotoDto({
     this.tags,
     this.previewURL,
     this.user,
+    this.id,
   });
 
   factory PhotoDto.fromJson(Map<String, dynamic> json) =>
