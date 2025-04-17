@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:modu_3_hackathon/core/secure/env_manager/env_manager.dart';
+import 'package:modu_3_hackathon/core/modules/state/base_state.dart';
 import 'package:modu_3_hackathon/presentation/pages/search/photo_search_view_model.dart';
 import 'package:modu_3_hackathon/presentation/widgets/search_text_field.dart';
 
@@ -31,8 +31,6 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                   onTap: () async {
                     if (_searchText.text.isEmpty) {
                       print('no data');
-                      final envManager = EnvManager();
-                      print(await envManager.readEnvData());
                       return;
                     }
                     widget.viewModel.getPhotos(_searchText.text);
@@ -44,22 +42,38 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                 ListenableBuilder(
                     listenable: widget.viewModel,
                     builder: (context, child) {
-                      return Expanded(
-                          child: GridView.builder(
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      mainAxisSpacing: 34,
-                                      crossAxisSpacing: 36),
-                              itemBuilder: (context, index) {
-                                return ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: Image.network(
-                                    'https://i.namu.wiki/i/d1A_wD4kuLHmOOFqJdVlOXVt1TWA9NfNt_HA0CS0Y_N0zayUAX8olMuv7odG2FiDLDQZIRBqbPQwBSArXfEJlQ.webp',
-                                    fit: BoxFit.cover,
-                                  ),
-                                );
-                              }));
+                      final state = widget.viewModel.state;
+                      if (state.photos.isEmpty) {
+                        return const SizedBox();
+                      }
+                      switch (state.state) {
+                        case BaseState.loading:
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        case BaseState.error:
+                          return Center(
+                            child: Text(state.errorMessage),
+                          );
+                        case BaseState.success:
+                          return Expanded(
+                              child: GridView.builder(
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          mainAxisSpacing: 34,
+                                          crossAxisSpacing: 36),
+                                  itemBuilder: (context, index) {
+                                    final photo = state.photos[index];
+                                    return ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Image.network(
+                                        'https://i.namu.wiki/i/d1A_wD4kuLHmOOFqJdVlOXVt1TWA9NfNt_HA0CS0Y_N0zayUAX8olMuv7odG2FiDLDQZIRBqbPQwBSArXfEJlQ.webp',
+                                        fit: BoxFit.cover,
+                                      ),
+                                    );
+                                  }));
+                      }
                     })
               ],
             ),
