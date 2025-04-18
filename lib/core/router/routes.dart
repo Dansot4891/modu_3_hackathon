@@ -10,8 +10,8 @@ final routes = [
     path: AppRoutes.search.path,
     name: AppRoutes.search.name,
     builder: (context, state) {
-      final viewModel = PhotoSearchViewModel(getIt());
-      return PhotoSearchPage(viewModel);
+      final PhotoSearchViewModel viewModel = getIt();
+      return const PhotoSearchPage();
     },
   ),
   GoRoute(

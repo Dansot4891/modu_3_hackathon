@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:modu_3_hackathon/core/di/app_di.dart';
 import 'package:modu_3_hackathon/core/modules/state/state_handling.dart';
 import 'package:modu_3_hackathon/core/router/routes.dart';
 import 'package:modu_3_hackathon/presentation/pages/search/photo_search_view_model.dart';
 import 'package:modu_3_hackathon/presentation/widgets/search_text_field.dart';
 
+final PhotoSearchViewModel viewModel = getIt();
+
 class PhotoSearchPage extends StatefulWidget {
-  final PhotoSearchViewModel viewModel;
-  const PhotoSearchPage(this.viewModel, {super.key});
+  const PhotoSearchPage({super.key});
 
   @override
   State<PhotoSearchPage> createState() => _PhotoSearchPageState();
@@ -34,16 +36,16 @@ class _PhotoSearchPageState extends State<PhotoSearchPage> {
                     if (_searchText.text.isEmpty) {
                       return;
                     }
-                    widget.viewModel.getPhotos(_searchText.text);
+                    viewModel.getPhotos(_searchText.text);
                   },
                 ),
                 const SizedBox(
                   height: 24,
                 ),
                 ListenableBuilder(
-                    listenable: widget.viewModel,
+                    listenable: viewModel,
                     builder: (context, child) {
-                      final state = widget.viewModel.state;
+                      final state = viewModel.state;
                       return Expanded(
                         child: StateHandling(
                           state.state,
