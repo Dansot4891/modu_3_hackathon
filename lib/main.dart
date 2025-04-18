@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:modu_3_hackathon/core/di/app_di.dart';
 import 'package:modu_3_hackathon/core/router/router.dart';
 
 void main() async {
+  diSetup();
   runApp(const MyApp());
 }
 
